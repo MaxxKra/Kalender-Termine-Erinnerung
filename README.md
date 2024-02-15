@@ -31,6 +31,10 @@ Die nachfolgenden Trigger-Templates werden alle 15 Minuten sowie bei einem Neust
 
 Zu diesem Zweck habe ich einen Helfer `input_button` mit dem Namen `trigger_update` konfiguriert.
 
+
+![HELFER](https://raw.githubusercontent.com/MaxxKra/README_images/master/Termine/Button_Trigger_Update.png)
+
+
 Dieser wird über die Automatisierung `Trigger Update`, für welche ich ein Blueprint erstellt habe, gedrückt.
 
 Um die Blaupause zu installieren, kann folgender Link verwendet werden:
