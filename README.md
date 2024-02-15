@@ -45,6 +45,12 @@ https://gist.github.com/MaxxKra/4b8e2fbc5555a85669288ae4573b8815
 ## TEMPLATE TERMINE HEUTE
 
 
+Alle Templates sind mit meinem Kalender `calendar.meine_termine` angelegt.
+Dieser Kalender muss bei den Templates auf den eigenen angepasst werden.
+Insgesamt ist der Kalender 3 x im Template eingetragen.
+
+
+
 ```yaml
 #            ######## ########  ####  ######    ######   ######## ########              #
 #               ##    ##     ##  ##  ##    ##  ##    ##  ##       ##     ##             #
