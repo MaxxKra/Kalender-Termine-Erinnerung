@@ -145,3 +145,287 @@ sensor:
 
 
 
+## TEMPLATE TERMINE MORGEN
+
+```yaml
+#            ######## ########  ####  ######    ######   ######## ########              #
+#               ##    ##     ##  ##  ##    ##  ##    ##  ##       ##     ##             #
+#               ##    ##     ##  ##  ##        ##        ##       ##     ##             #
+#               ##    ########   ##  ##   #### ##   #### ######   ########              #
+#               ##    ##   ##    ##  ##    ##  ##    ##  ##       ##   ##               #
+#               ##    ##    ##   ##  ##    ##  ##    ##  ##       ##    ##              #
+#               ##    ##     ## ####  ######    ######   ######## ##     ##             #
+#                                                                                       #
+#             ######  ######## ##    ##  ######   #######  ########                     #
+#            ##    ## ##       ###   ## ##    ## ##     ## ##     ##                    #
+#            ##       ##       ####  ## ##       ##     ## ##     ##                    #
+#             ######  ######   ## ## ##  ######  ##     ## ########                     #
+#                  ## ##       ##  ####       ## ##     ## ##   ##                      #
+#            ##    ## ##       ##   ### ##    ## ##     ## ##    ##                     #
+#             ######  ######## ##    ##  ######   #######  ##     ##                    #
+
+#########################################################################################
+#---------------------------------------------------------------------------------------#
+##-----------------------  Liste von Terminen aus dem Kalender ------------------------##
+#---------------------------------------------------------------------------------------#
+#########################################################################################
+
+#----------------------------------------------------------------------------------------
+# Liste aus dem Termine - Kalender für Morgen
+#----------------------------------------------------------------------------------------
+
+
+#----------------------------------------------------------------------------------------
+# Auslöser - Aktion starten (Alle 15 Min. und HA Neustart)
+#----------------------------------------------------------------------------------------
+trigger:
+  - platform: state
+    entity_id:
+      - input_button.trigger_update
+      
+#----------------------------------------------------------------------------------------
+# Aktion - Events abrufen (60 Tage)
+#----------------------------------------------------------------------------------------
+action:
+  - service: calendar.get_events
+    target:
+      entity_id: calendar.meine_termine
+    data:
+      start_date_time: "{{ (as_timestamp(now()) + 86400) | timestamp_custom('%Y-%m-%d 00:00:01', true) }}"
+      end_date_time: "{{ (as_timestamp(now()) + 86400) | timestamp_custom('%Y-%m-%d 23:59:59', true) }}"
+    response_variable: tomorrow_events
+
+#----------------------------------------------------------------------------------------
+# Sensor mit Attributen anlegen
+#----------------------------------------------------------------------------------------
+sensor:
+  - name: Termine Morgen
+    unique_id: termine_morgen
+    state: "{{ tomorrow_events['calendar.meine_termine'].events | count() }}"
+    attributes:
+      termine_morgen: >
+        {%- set data = namespace(result=[]) %}
+        {%- for event in tomorrow_events['calendar.meine_termine'].events %}
+          {%- set START = strptime(event.start, '%Y-%m-%dT%H:%M:%S%z') %}
+          {%- set ENDE = strptime(event.end, '%Y-%m-%dT%H:%M:%S%z') %}
+          {%- set UHRZEIT = START.strftime("%H:%M") %}
+          {%- set DAUER_MIN = ((ENDE - START).seconds) // 60 %}
+          
+          {%- set DAUER_STUNDEN = DAUER_MIN // 60 %}
+          {%- set DAUER_REST_MINUTEN = DAUER_MIN % 60 %}
+          
+          {%- set DAUER_STRING = "Dauer: " %}
+          {%- if DAUER_STUNDEN > 0 %}
+            {%- set DAUER_STRING = DAUER_STRING + DAUER_STUNDEN|string + " Stunde" + ("n" if DAUER_STUNDEN > 1 else "") + " " %}
+          {%- endif %}
+          {%- if DAUER_REST_MINUTEN > 0 %}
+            {%- set DAUER_STRING = DAUER_STRING + DAUER_REST_MINUTEN|string + " Minute" + ("n" if DAUER_REST_MINUTEN > 1 else "") %}
+          {%- endif %}
+          
+          {%- set TERMIN = event.summary %}
+          {%- set HINWEIS = event.description | default('') %}
+          
+          {%- set event_dict = {
+              'Uhrzeit': UHRZEIT,
+              'Dauer': DAUER_STRING,
+              'Termin': TERMIN,
+              'Hinweis': HINWEIS
+            }
+          %}
+          
+          {%- set data.result = data.result + [(event_dict)] %}
+        {%- endfor %}
+        {{ data.result }}
+    icon: mdi:calendar
+```
+
+
+## TEMPLATE NÄCHSTER TERMIN HEUTE
+
+```yaml
+#            ######## ########  ####  ######    ######   ######## ########              #
+#               ##    ##     ##  ##  ##    ##  ##    ##  ##       ##     ##             #
+#               ##    ##     ##  ##  ##        ##        ##       ##     ##             #
+#               ##    ########   ##  ##   #### ##   #### ######   ########              #
+#               ##    ##   ##    ##  ##    ##  ##    ##  ##       ##   ##               #
+#               ##    ##    ##   ##  ##    ##  ##    ##  ##       ##    ##              #
+#               ##    ##     ## ####  ######    ######   ######## ##     ##             #
+#                                                                                       #
+#             ######  ######## ##    ##  ######   #######  ########                     #
+#            ##    ## ##       ###   ## ##    ## ##     ## ##     ##                    #
+#            ##       ##       ####  ## ##       ##     ## ##     ##                    #
+#             ######  ######   ## ## ##  ######  ##     ## ########                     #
+#                  ## ##       ##  ####       ## ##     ## ##   ##                      #
+#            ##    ## ##       ##   ### ##    ## ##     ## ##    ##                     #
+#             ######  ######## ##    ##  ######   #######  ##     ##                    #
+
+#########################################################################################
+#---------------------------------------------------------------------------------------#
+##-------------------------  Nächster Termin aus dem Kalender -------------------------##
+#---------------------------------------------------------------------------------------#
+#########################################################################################
+
+#----------------------------------------------------------------------------------------
+# Nächster Termin aus dem Termine - Kalender für Heute
+#----------------------------------------------------------------------------------------
+
+
+#----------------------------------------------------------------------------------------
+# Auslöser - Aktion starten (Alle 15 Min. und HA Neustart) über Automatisierung
+#----------------------------------------------------------------------------------------
+trigger:
+  - platform: state
+    entity_id:
+      - input_button.trigger_update
+      
+#----------------------------------------------------------------------------------------
+# Aktion - Event abrufen in 30 Minuten für 15 Minuten
+#----------------------------------------------------------------------------------------
+action:
+  - service: calendar.get_events
+    target:
+      entity_id: calendar.meine_termine
+    data:
+      start_date_time: "{{ (as_timestamp(now()) + 1800) | timestamp_custom('%Y-%m-%d %H:%M:%S', true) }}"
+      end_date_time: "{{ (as_timestamp(now()) + 2700) | timestamp_custom('%Y-%m-%d %H:%M:%S', true) }}"
+    response_variable: today_events_next
+
+#----------------------------------------------------------------------------------------
+# Sensor mit Attributen anlegen
+#----------------------------------------------------------------------------------------
+sensor:
+  - name: Termine Heute Nächster
+    unique_id: termine_heute_nachster
+    state: "{{ today_events_next['calendar.meine_termine'].events | count() }}"
+    attributes:
+      termine_heute: >
+        {%- set data = namespace(result=[]) %}
+        {%- for event in today_events_next['calendar.meine_termine'].events %}
+          {%- set START = strptime(event.start, '%Y-%m-%dT%H:%M:%S%z') %}
+          {%- set ENDE = strptime(event.end, '%Y-%m-%dT%H:%M:%S%z') %}
+          {%- set UHRZEIT = START.strftime("%H:%M") %}
+          {%- set DAUER_MIN = ((ENDE - START).seconds) // 60 %}
+          
+          {%- set DAUER_STUNDEN = DAUER_MIN // 60 %}
+          {%- set DAUER_REST_MINUTEN = DAUER_MIN % 60 %}
+          
+          {%- set DAUER_STRING = "Dauer: " %}
+          {%- if DAUER_STUNDEN > 0 %}
+            {%- set DAUER_STRING = DAUER_STRING + DAUER_STUNDEN|string + " Stunde" + ("n" if DAUER_STUNDEN > 1 else "") + " " %}
+          {%- endif %}
+          {%- if DAUER_REST_MINUTEN > 0 %}
+            {%- set DAUER_STRING = DAUER_STRING + DAUER_REST_MINUTEN|string + " Minute" + ("n" if DAUER_REST_MINUTEN > 1 else "") %}
+          {%- endif %}
+          
+          {%- set TERMIN = event.summary %}
+          {%- set HINWEIS = event.description | default('') %}
+          
+          {%- set event_dict = {
+              'Uhrzeit': UHRZEIT,
+              'Dauer': DAUER_STRING,
+              'Termin': TERMIN,
+              'Hinweis': HINWEIS
+            }
+          %}
+          
+          {%- set data.result = data.result + [(event_dict)] %}
+        {%- endfor %}
+        {{ data.result }}
+    icon: mdi:calendar
+```
+
+
+## TEMPLATE TERMIN MORGEN UM DIESE ZEIT
+
+
+```yaml
+#            ######## ########  ####  ######    ######   ######## ########              #
+#               ##    ##     ##  ##  ##    ##  ##    ##  ##       ##     ##             #
+#               ##    ##     ##  ##  ##        ##        ##       ##     ##             #
+#               ##    ########   ##  ##   #### ##   #### ######   ########              #
+#               ##    ##   ##    ##  ##    ##  ##    ##  ##       ##   ##               #
+#               ##    ##    ##   ##  ##    ##  ##    ##  ##       ##    ##              #
+#               ##    ##     ## ####  ######    ######   ######## ##     ##             #
+#                                                                                       #
+#             ######  ######## ##    ##  ######   #######  ########                     #
+#            ##    ## ##       ###   ## ##    ## ##     ## ##     ##                    #
+#            ##       ##       ####  ## ##       ##     ## ##     ##                    #
+#             ######  ######   ## ## ##  ######  ##     ## ########                     #
+#                  ## ##       ##  ####       ## ##     ## ##   ##                      #
+#            ##    ## ##       ##   ### ##    ## ##     ## ##    ##                     #
+#             ######  ######## ##    ##  ######   #######  ##     ##                    #
+
+#########################################################################################
+#---------------------------------------------------------------------------------------#
+##------------  Termin Morgen um diese Zeit von Terminen aus dem Kalender -------------##
+#---------------------------------------------------------------------------------------#
+#########################################################################################
+
+#----------------------------------------------------------------------------------------
+# Nächster Termin Morgen aus dem Termine - Kalender für Morgen
+#----------------------------------------------------------------------------------------
+
+
+#----------------------------------------------------------------------------------------
+# Auslöser - Aktion starten (Alle 15 Min. und HA Neustart) durch Automatisierung
+#----------------------------------------------------------------------------------------
+trigger:
+  - platform: state
+    entity_id:
+      - input_button.trigger_update
+      
+#----------------------------------------------------------------------------------------
+# Aktion - Events abrufen in 24 Stunden für 15 Minuten
+#----------------------------------------------------------------------------------------
+action:
+  - service: calendar.get_events
+    target:
+      entity_id: calendar.meine_termine
+    data:
+      start_date_time: "{{ (as_timestamp(now()) + 86400) | timestamp_custom('%Y-%m-%d %H:%M:%S', true) }}"
+      end_date_time: "{{ (as_timestamp(now()) + 87300) | timestamp_custom('%Y-%m-%d %H:%M:%S', true) }}"
+    response_variable: tomorrow_events_next
+
+#----------------------------------------------------------------------------------------
+# Sensor mit Attributen anlegen
+#----------------------------------------------------------------------------------------
+sensor:
+  - name: Termine Morgen Nächster
+    unique_id: termine_morgen_nachster
+    state: "{{ tomorrow_events_next['calendar.meine_termine'].events | count() }}"
+    attributes:
+      termine_morgen: >
+        {%- set data = namespace(result=[]) %}
+        {%- for event in tomorrow_events_next['calendar.meine_termine'].events %}
+          {%- set START = strptime(event.start, '%Y-%m-%dT%H:%M:%S%z') %}
+          {%- set ENDE = strptime(event.end, '%Y-%m-%dT%H:%M:%S%z') %}
+          {%- set UHRZEIT = START.strftime("%H:%M") %}
+          {%- set DAUER_MIN = ((ENDE - START).seconds) // 60 %}
+          
+          {%- set DAUER_STUNDEN = DAUER_MIN // 60 %}
+          {%- set DAUER_REST_MINUTEN = DAUER_MIN % 60 %}
+          
+          {%- set DAUER_STRING = "Dauer: " %}
+          {%- if DAUER_STUNDEN > 0 %}
+            {%- set DAUER_STRING = DAUER_STRING + DAUER_STUNDEN|string + " Stunde" + ("n" if DAUER_STUNDEN > 1 else "") + " " %}
+          {%- endif %}
+          {%- if DAUER_REST_MINUTEN > 0 %}
+            {%- set DAUER_STRING = DAUER_STRING + DAUER_REST_MINUTEN|string + " Minute" + ("n" if DAUER_REST_MINUTEN > 1 else "") %}
+          {%- endif %}
+          
+          {%- set TERMIN = event.summary %}
+          {%- set HINWEIS = event.description | default('') %}
+          
+          {%- set event_dict = {
+              'Uhrzeit': UHRZEIT,
+              'Dauer': DAUER_STRING,
+              'Termin': TERMIN,
+              'Hinweis': HINWEIS
+            }
+          %}
+          
+          {%- set data.result = data.result + [(event_dict)] %}
+        {%- endfor %}
+        {{ data.result }}
+    icon: mdi:calendar
+```
