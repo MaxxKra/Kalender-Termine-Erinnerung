@@ -2,7 +2,26 @@
 Mit dieser Zusammenstellung von Home Assistant Trigger-Templates und Notify-Automatisierungen besteht die Möglichkeit, Termine aus dem Kalender übersichtlich für heute oder morgen zu erfassen. Zusätzlich kann der nächste anstehende Termin aus dem Kalender auf dem Dashboard angezeigt oder durch eine Notify-Benachrichtigung hervorgehoben werden.
 
 
-## ÜBER TRIGGER SENDOREN/TEMPLATES
+<br>
+
+### <p align="center">Wenn du Interesse daran hast, mich, meinen Kanal oder meine kreative Arbeit zu unterstützen,<br>freue ich mich über jeglichen Support:
+</p>
+<p align="center">
+  <a href="https://www.buymeacoffee.com/">
+    <img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee">
+  </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://www.paypal.me/kramlmaxx">
+    <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" alt="PayPal Donate">
+  </a>
+</p>
+
+### <p align="center">Danke</p>
+
+<br>
+
+
+## :one: ÜBER TRIGGER SENDOREN/TEMPLATES
 
 
 Ein Home Assistant Trigger-Sensor ist ein Komponententyp in der Home Assistant-Plattform, der dazu dient, auf bestimmte Ereignisse oder Zustände zu reagieren und automatisierte Aktionen auszulösen. Dieser Sensor überwacht kontinuierlich den Status von bestimmten Entitäten oder Plattformen und wird aktiviert, wenn vordefinierte Bedingungen erfüllt sind.
@@ -42,7 +61,7 @@ Um die Blaupause zu installieren, kann folgender Link verwendet werden:
 https://gist.github.com/MaxxKra/4b8e2fbc5555a85669288ae4573b8815
 
 
-## TEMPLATE TERMINE HEUTE
+## :two: TEMPLATE TERMINE HEUTE
 
 
 Alle Templates sind mit meinem Kalender `calendar.meine_termine` angelegt.
@@ -50,6 +69,12 @@ Dieser Kalender muss bei den Templates auf den eigenen angepasst werden.
 Insgesamt ist der Kalender 3 x im Template eingetragen.
 
 
+<details>
+
+
+### TRIGGER-TEMPLATE-SENSOR TERMINE HEUTE
+
+<summary>:arrow_down_small: TRIGGER-TEMPLATE-SENSOR TERMINE HEUTE :arrow_down_small:</summary>
 
 ```yaml
 #            ######## ########  ####  ######    ######   ######## ########              #
@@ -70,13 +95,9 @@ Insgesamt ist der Kalender 3 x im Template eingetragen.
 
 #########################################################################################
 #---------------------------------------------------------------------------------------#
-##-----------------------  Liste von Terminen aus dem Kalender ------------------------##
+##-----------------  Liste von Terminen aus dem Kalender - Für Heute ------------------##
 #---------------------------------------------------------------------------------------#
 #########################################################################################
-
-#----------------------------------------------------------------------------------------
-# Liste aus dem Termine - Kalender für Heute
-#----------------------------------------------------------------------------------------
 
 
 #----------------------------------------------------------------------------------------
@@ -143,9 +164,22 @@ sensor:
     icon: mdi:calendar
 ```
 
+</details>
+
+<br>
 
 
-## TEMPLATE TERMINE MORGEN
+
+## :three: TEMPLATE TERMINE MORGEN
+
+
+
+<details>
+
+
+### TRIGGER-TEMPLATE-SENSOR TERMINE MORGEN
+
+<summary>:arrow_down_small: TRIGGER-TEMPLATE-SENSOR TERMINE MORGEN :arrow_down_small:</summary>
 
 ```yaml
 #            ######## ########  ####  ######    ######   ######## ########              #
@@ -166,13 +200,9 @@ sensor:
 
 #########################################################################################
 #---------------------------------------------------------------------------------------#
-##-----------------------  Liste von Terminen aus dem Kalender ------------------------##
+##-----------------  Liste von Terminen aus dem Kalender - Für Morgen -----------------##
 #---------------------------------------------------------------------------------------#
 #########################################################################################
-
-#----------------------------------------------------------------------------------------
-# Liste aus dem Termine - Kalender für Morgen
-#----------------------------------------------------------------------------------------
 
 
 #----------------------------------------------------------------------------------------
@@ -239,8 +269,21 @@ sensor:
     icon: mdi:calendar
 ```
 
+</details>
 
-## TEMPLATE NÄCHSTER TERMIN HEUTE
+<br>
+
+
+## :four: TEMPLATE NÄCHSTER TERMIN HEUTE
+
+
+
+<details>
+
+
+### TRIGGER-TEMPLATE-SENSOR NÄCHSTER TERMINE HEUTE
+
+<summary>:arrow_down_small: TRIGGER-TEMPLATE-SENSOR NÄCHSTER TERMINE HEUTE :arrow_down_small:</summary>
 
 ```yaml
 #            ######## ########  ####  ######    ######   ######## ########              #
@@ -261,13 +304,9 @@ sensor:
 
 #########################################################################################
 #---------------------------------------------------------------------------------------#
-##-------------------------  Nächster Termin aus dem Kalender -------------------------##
+##----------------------  Nächster Termin Heute aus dem Kalender ----------------------##
 #---------------------------------------------------------------------------------------#
 #########################################################################################
-
-#----------------------------------------------------------------------------------------
-# Nächster Termin aus dem Termine - Kalender für Heute
-#----------------------------------------------------------------------------------------
 
 
 #----------------------------------------------------------------------------------------
@@ -334,9 +373,21 @@ sensor:
     icon: mdi:calendar
 ```
 
+</details>
 
-## TEMPLATE TERMIN MORGEN UM DIESE ZEIT
+<br>
 
+
+## :five: TEMPLATE TERMIN MORGEN UM DIESE ZEIT
+
+
+
+<details>
+
+
+### TRIGGER-TEMPLATE-SENSOR TERMIN MORGEN NÄCHSTER
+
+<summary>:arrow_down_small: TRIGGER-TEMPLATE-SENSOR TERMIN MORGEN NÄCHSTER :arrow_down_small:</summary>
 
 ```yaml
 #            ######## ########  ####  ######    ######   ######## ########              #
@@ -360,10 +411,6 @@ sensor:
 ##------------  Termin Morgen um diese Zeit von Terminen aus dem Kalender -------------##
 #---------------------------------------------------------------------------------------#
 #########################################################################################
-
-#----------------------------------------------------------------------------------------
-# Nächster Termin Morgen aus dem Termine - Kalender für Morgen
-#----------------------------------------------------------------------------------------
 
 
 #----------------------------------------------------------------------------------------
@@ -429,3 +476,7 @@ sensor:
         {{ data.result }}
     icon: mdi:calendar
 ```
+
+</details>
+
+<br>
