@@ -81,10 +81,13 @@ Diese werden in Home Assistant so angezeigt:
 
 
 <img src="https://raw.githubusercontent.com/MaxxKra/README_images/master/Termine/HA_Termine_Heute.png" alt="Example" width="600"/>
-<details>
 
 
 Dazu muss lediglich das folgende Template in Home Assistant angelegt werden.
+> [!IMPORTANT]
+> Nicht vergessen den Kalendernamen anzupassen und den Trigger (Button und Automatisierung) einzurichten!
+
+<details>
 
 
 ### TRIGGER-TEMPLATE-SENSOR TERMINE HEUTE
