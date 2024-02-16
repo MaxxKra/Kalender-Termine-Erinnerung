@@ -311,6 +311,9 @@ sensor:
 ## :four: TEMPLATE NÄCHSTER TERMIN HEUTE
 
 
+Um eine Terminerinnerung 30 Minuten vorher zu erhalten, habe ich dieses Template angelegt.
+
+
 Für den nächsten Termin Heute, habe ich in meinem Google-Kalender für die Tests folgende Termine eingetragen:
 
 
@@ -430,6 +433,8 @@ sensor:
 
 
 ## :five: TEMPLATE TERMIN MORGEN UM DIESE ZEIT
+
+Um eine Terminerinnerung 24 Stunden vorher zu erhalten, habe ich dieses Template angelegt.
 
 
 Für den Termin Morgen um diese Zeit, habe ich in meinem Google-Kalender für die Tests folgende Termine eingetragen:
