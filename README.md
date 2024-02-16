@@ -21,7 +21,7 @@ Mit dieser Zusammenstellung von Home Assistant Trigger-Templates und Notify-Auto
 <br>
 
 
-## :one: ÜBER TRIGGER SENDOREN/TEMPLATES
+## :one: ÜBER TRIGGER SENSOREN/TEMPLATES
 
 
 Ein Home Assistant Trigger-Sensor ist ein Komponententyp in der Home Assistant-Plattform, der dazu dient, auf bestimmte Ereignisse oder Zustände zu reagieren und automatisierte Aktionen auszulösen. Dieser Sensor überwacht kontinuierlich den Status von bestimmten Entitäten oder Plattformen und wird aktiviert, wenn vordefinierte Bedingungen erfüllt sind.
