@@ -191,6 +191,22 @@ sensor:
 ## :three: TEMPLATE TERMINE MORGEN
 
 
+Für die Termine Morgen habe ich in meinem Google-Kalender für die Tests folgende Termine eingetragen:
+
+
+<img src="https://raw.githubusercontent.com/MaxxKra/README_images/master/Termine/Kalender_Termine_Morgen.png" alt="Example" width="600"/>
+
+
+Diese werden in Home Assistant so angezeigt:
+
+
+<img src="https://raw.githubusercontent.com/MaxxKra/README_images/master/Termine/HA_Termine_Morgen.png" alt="Example" width="600"/>
+
+
+Dazu muss lediglich das folgende Template in Home Assistant angelegt werden.
+> [!IMPORTANT]
+> Nicht vergessen den Kalendernamen anzupassen und den Trigger (Button und Automatisierung) einzurichten!
+
 
 <details>
 
@@ -295,6 +311,23 @@ sensor:
 ## :four: TEMPLATE NÄCHSTER TERMIN HEUTE
 
 
+Für den nächsten Termin Heute, habe ich in meinem Google-Kalender für die Tests folgende Termine eingetragen:
+
+
+<img src="https://raw.githubusercontent.com/MaxxKra/README_images/master/Termine/Kalender_Termine_Heute.png" alt="Example" width="600"/>
+
+
+Diese werden in Home Assistant um 05:30 Uhr so angezeigt:
+
+
+<img src="https://raw.githubusercontent.com/MaxxKra/README_images/master/Termine/HA_Termin_Heute_Nächster.png" alt="Example" width="600"/>
+
+
+Dazu muss lediglich das folgende Template in Home Assistant angelegt werden.
+> [!IMPORTANT]
+> Nicht vergessen den Kalendernamen anzupassen und den Trigger (Button und Automatisierung) einzurichten!
+
+
 
 <details>
 
@@ -397,6 +430,23 @@ sensor:
 
 
 ## :five: TEMPLATE TERMIN MORGEN UM DIESE ZEIT
+
+
+Für den Termin Morgen um diese Zeit, habe ich in meinem Google-Kalender für die Tests folgende Termine eingetragen:
+
+
+<img src="https://raw.githubusercontent.com/MaxxKra/README_images/master/Termine/Kalender_Termine_Morgen.png" alt="Example" width="600"/>
+
+
+Diese werden in Home Assistant heute um 05:30 Uhr so angezeigt:
+
+
+<img src="https://raw.githubusercontent.com/MaxxKra/README_images/master/Termine/HA_Termin_Morgen_Nächster.png" alt="Example" width="600"/>
+
+
+Dazu muss lediglich das folgende Template in Home Assistant angelegt werden.
+> [!IMPORTANT]
+> Nicht vergessen den Kalendernamen anzupassen und den Trigger (Button und Automatisierung) einzurichten!
 
 
 
