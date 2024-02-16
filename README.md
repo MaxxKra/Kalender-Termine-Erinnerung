@@ -80,7 +80,7 @@ In meinem Google-Kalender habe ich für die Tests folgende Termine eingetragen:
 Diese werden in Home Assistant so angezeigt:
 
 
-<img src="https://raw.githubusercontent.com/MaxxKra/README_images/master/Termine/HA_Termine_Heute.png" alt="Example" width="600"/>
+<img src="https://raw.githubusercontent.com/MaxxKra/README_images/master/Termine/HA_Termine_Heute.png" alt="Example" width="800"/>
 
 
 Dazu muss lediglich das folgende Template in Home Assistant angelegt werden.
@@ -200,7 +200,7 @@ Für die Termine Morgen habe ich in meinem Google-Kalender für die Tests folgen
 Diese werden in Home Assistant so angezeigt:
 
 
-<img src="https://raw.githubusercontent.com/MaxxKra/README_images/master/Termine/HA_Termine_Morgen.png" alt="Example" width="600"/>
+<img src="https://raw.githubusercontent.com/MaxxKra/README_images/master/Termine/HA_Termine_Morgen.png" alt="Example" width="800"/>
 
 
 Dazu muss lediglich das folgende Template in Home Assistant angelegt werden.
@@ -323,7 +323,7 @@ Für den nächsten Termin Heute, habe ich in meinem Google-Kalender für die Tes
 Diese werden in Home Assistant um 05:30 Uhr so angezeigt:
 
 
-<img src="https://raw.githubusercontent.com/MaxxKra/README_images/master/Termine/HA_Termin_Heute_Nächster.png" alt="Example" width="600"/>
+<img src="https://raw.githubusercontent.com/MaxxKra/README_images/master/Termine/HA_Termin_Heute_Nächster.png" alt="Example" width="800"/>
 
 
 Dazu muss lediglich das folgende Template in Home Assistant angelegt werden.
@@ -446,7 +446,7 @@ Für den Termin Morgen um diese Zeit, habe ich in meinem Google-Kalender für di
 Diese werden in Home Assistant heute um 05:30 Uhr so angezeigt:
 
 
-<img src="https://raw.githubusercontent.com/MaxxKra/README_images/master/Termine/HA_Termin_Morgen_Nächster.png" alt="Example" width="600"/>
+<img src="https://raw.githubusercontent.com/MaxxKra/README_images/master/Termine/HA_Termin_Morgen_Nächster.png" alt="Example" width="800"/>
 
 
 Dazu muss lediglich das folgende Template in Home Assistant angelegt werden.
@@ -562,13 +562,13 @@ Die folgenden Automatisierungen werden durch eine Veränderung des Sensors (Näc
 Eine Bedingung ist, dass mindestens 1 Termin ansteht (also nicht 0)
 
 
-<img src="https://raw.githubusercontent.com/MaxxKra/README_images/master/Termine/HA_Termin_Heute_Nächster_Anzahl.png" alt="Example" width="600"/>
+<img src="https://raw.githubusercontent.com/MaxxKra/README_images/master/Termine/HA_Termin_Heute_Nächster_Anzahl.png" alt="Example" width="800"/>
 
 
 Als Ergebnis werden die Erinnerungen als Notify an das Smartphone gesendet:
 
 
-<img src="https://raw.githubusercontent.com/MaxxKra/README_images/master/Termine/Notifys.png" alt="Example" width="600"/>
+<img src="https://raw.githubusercontent.com/MaxxKra/README_images/master/Termine/Notifys.png" alt="Example" width="500"/>
 
 
 Die Automatisierung ist hier als YAML-Code zum kopieren bereit gestellt.
