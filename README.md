@@ -51,7 +51,7 @@ Die nachfolgenden Trigger-Templates werden alle 15 Minuten sowie bei einem Neust
 Zu diesem Zweck habe ich einen Helfer `input_button` mit dem Namen `trigger_update` konfiguriert.
 
 
-![HELFER](https://raw.githubusercontent.com/MaxxKra/README_images/master/Termine/Button_Trigger_Update.png)
+<img src="https://raw.githubusercontent.com/MaxxKra/README_images/master/Termine/Button_Trigger_Update.png" alt="Example" width="600"/>
 
 
 Dieser wird über die Automatisierung `Trigger Update`, für welche ich ein Blueprint erstellt habe, gedrückt.
@@ -68,8 +68,23 @@ Alle Templates sind mit meinem Kalender `calendar.meine_termine` angelegt.
 Dieser Kalender muss bei den Templates auf den eigenen angepasst werden.
 Insgesamt ist der Kalender 3 x im Template eingetragen.
 
+<img src="https://raw.githubusercontent.com/MaxxKra/README_images/master/Termine/Template_Korrekturen.png" alt="Example" width="600"/>
 
+
+In meinem Google-Kalender habe ich für die Tests folgende Termine eingetragen:
+
+
+<img src="https://raw.githubusercontent.com/MaxxKra/README_images/master/Termine/Kalender_Termine_Heute.png" alt="Example" width="600"/>
+
+
+Diese werden in Home Assistant so angezeigt:
+
+
+<img src="https://raw.githubusercontent.com/MaxxKra/README_images/master/Termine/HA_Termine_Heute.png" alt="Example" width="600"/>
 <details>
+
+
+Dazu muss lediglich das folgende Template in Home Assistant angelegt werden.
 
 
 ### TRIGGER-TEMPLATE-SENSOR TERMINE HEUTE
