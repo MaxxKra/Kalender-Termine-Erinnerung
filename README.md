@@ -659,3 +659,183 @@ action:
         }}
 mode: single
 ```
+
+<br>
+
+
+# :seven: DASHBOARD OPTIONEN
+
+
+Auf einem Dashboard könnten die Termine beispielsweise so angezeigt werden:
+
+
+<img src="https://raw.githubusercontent.com/MaxxKra/README_images/master/Termine/Kalender_Monat_DB.png" alt="Example" width="600"/>
+
+
+```yaml
+type: custom:atomic-calendar-revive
+name: Unsere Kalender
+enableModeChange: true
+entities:
+  - entity: calendar.meine_termine
+    color: '#e6bc47'
+    type: icon
+    icon: mdi:calendar-account
+firstDayOfWeek: 1
+maxDaysToShow: 60
+refreshInterval: 60
+showDate: true
+showCurrentEventLine: true
+sortByStartTime: true
+dimFinishedEvents: false
+showLastCalendarWeek: true
+disableCalEventLink: true
+disableCalLink: true
+showNoEventsForToday: false
+showProgressBar: true
+showWeekDay: true
+showWeekNumber: true
+disableEventLink: true
+disableLocationLink: true
+showEventIcon: true
+showFullDayProgress: true
+showHiddenText: true
+dateColor: '#f1d7a6'
+timeColor: rgb(119,221,119)
+eventTitleColor: '#cc5500'
+locationLinkColor: rgb(253, 253, 150)
+locationIconColor: rgb(253, 253, 150)
+dayWrapperLineColor: rgba(253, 253, 150, .35)
+descColor: '#f1d7a6'
+eventCalNameColor: '#f1d7a6'
+calGridColor: rgba(253, 253, 150, 0.15)
+calEventBackgroundColor: rgb(194, 59, 0.15)
+calEventSatColor: rgba(12, 56, 100, 0.25)
+calEventSunColor: rgba(12, 56, 100, 0.25)
+calActiveEventBackgroundColor: rgba(128, 206, 225, 0.3)
+defaultCalColor: '#f1d7a6'
+calDayColor: '#f1d7a6'
+nameColor: '#f1d7a6'
+calWeekDayColor: '#f1d7a6'
+calDateColor: '#f1d7a6'
+cardHeight: 100%
+calShowDescription: true
+defaultMode: Calendar
+showDeclined: true
+showLocation: true
+showLoader: true
+hideDuplicates: true
+disableCalLocationLink: true
+compactMode: false
+showMultiDayEventParts: true
+showMultiDay: true
+allDayBottom: true
+offsetHeaderDate: true
+hideFinishedEvents: true
+showCalendarName: false
+showDatePerEvent: false
+showTimeRemaining: false
+hoursOnSameLine: false
+showMonth: true
+titleLength: 0
+startDaysAhead: 0
+sortBy: start
+noEventText: Keine Termine
+noEventsForNextDaysText: Keine Termine in den nächsten Tagen
+hiddenEventText: Termine sind versteckt
+untilText: Bis
+view_layout:
+  grid-area: Kal
+card_mod:
+  style: |
+    ha-card {
+      border: none;
+      background: transparent;
+      font-family: Arial Rounded MT;  
+      color: {{ states['sensor.dashboard_primar_farbe'].state }} !important;
+    }
+    .calDay {
+      font-size: 1.2vw !important;
+      color: {{ states['sensor.dashboard_primar_farbe'].state }} !important;
+      height: 3vw !important;
+      max-width: 80px !important;
+    }
+    .calIcon {
+      --mdc-icon-size: 15px !important;
+    }
+    thead th.cal {
+      font-size: 1.2vw !important; !important;
+      height: 3vw !important;
+    }
+
+```
+
+
+<img src="https://raw.githubusercontent.com/MaxxKra/README_images/master/Termine/Kalender_Tage_DB.png" alt="Example" width="600"/>
+
+
+```yaml
+type: custom:atomic-calendar-revive
+name: Ereignisliste
+enableModeChange: true
+entities:
+  - entity: calendar.meine_termine
+    type: icon
+    icon: mdi:calendar-alert
+    color: '#ec6288'
+firstDayOfWeek: 1
+maxDaysToShow: 14
+refreshInterval: 60
+showDate: true
+showCurrentEventLine: false
+sortByStartTime: false
+dimFinishedEvents: true
+showLastCalendarWeek: false
+disableCalEventLink: true
+disableCalLink: true
+showNoEventsForToday: false
+showProgressBar: true
+showWeekDay: true
+disableEventLink: true
+disableLocationLink: true
+showEventIcon: false
+showFullDayProgress: false
+showHiddenText: false
+showLoader: false
+showLocation: false
+showDescription: true
+disableCalLocationLink: true
+dateColor: rgb(119,158,203)
+timeColor: rgb(119,221,119)
+locationLinkColor: rgb(253, 253, 150)
+locationIconColor: rgb(253, 253, 150)
+dayWrapperLineColor: rgba(253, 253, 150, .35)
+descColor: '#00FF00'
+eventTitleColor: '#cc5500'
+eventCalNameColor: '#1E90FF'
+calGridColor: rgba(253, 253, 150, .35)
+calEventBackgroundColor: rgb(194, 59, 34)
+calEventSatColor: rgba(12, 56, 100, .05)
+calEventSunColor: rgba(12, 56, 100, .15)
+calActiveEventBackgroundColor: rgba(128, 206, 225, .15)
+defaultCalColor: '#00FF00'
+calDayColor: rgb(119,221,119)
+nameColor: rgb(119,221,119)
+calWeekDayColor: '#cc5500'
+calDateColor: rgb(119,221,119)
+noEventsForNextDaysText: Keine Ereignisse in den nächsten Tagen!
+noEventText: Keine Ereignisse
+hiddenEventText: Ereignisse sind versteckt!
+untilText: Bis
+view_layout:
+  grid-area: Erin
+card_mod:
+  style: |
+    ha-card {
+      border: none;
+      background: transparent;
+      font-family: Arial Rounded MT;
+      color: {{ states['sensor.dashboard_primar_farbe'].state }}
+    }
+
+```
