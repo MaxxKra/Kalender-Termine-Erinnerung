@@ -21,7 +21,7 @@ Mit dieser Zusammenstellung von Home Assistant Trigger-Templates und Notify-Auto
 <br>
 
 
-## :one: ÜBER TRIGGER SENSOREN/TEMPLATES
+# :one: ÜBER TRIGGER SENSOREN/TEMPLATES
 
 
 Ein Home Assistant Trigger-Sensor ist ein Komponententyp in der Home Assistant-Plattform, der dazu dient, auf bestimmte Ereignisse oder Zustände zu reagieren und automatisierte Aktionen auszulösen. Dieser Sensor überwacht kontinuierlich den Status von bestimmten Entitäten oder Plattformen und wird aktiviert, wenn vordefinierte Bedingungen erfüllt sind.
@@ -44,7 +44,7 @@ Die Hauptfunktionen eines Trigger-Sensors sind:
 Beispiele für Trigger-Sensoren in Home Assistant sind State-Trigger, Time-Trigger oder Event-Trigger. Diese Sensoren spielen eine entscheidende Rolle bei der Automatisierung von Smart-Home-Funktionen, indem sie eine nahtlose Integration verschiedener Geräte und Plattformen ermöglichen.
 
 
-# HELFER BUTTON
+## HELFER BUTTON
 
 Die nachfolgenden Trigger-Templates werden alle 15 Minuten sowie bei einem Neustart von Home Assistant ausgelöst. Um unerwünschte LOG-Einträge zu vermeiden, habe ich einen Input-Button als Auslöser verwendet, anstelle den Zeitinterval `time-pattern` direkt im Template einzusetzen. Die Betätigung dieses Buttons erfolgt durch eine entsprechende Automatisierung.
 
@@ -61,7 +61,7 @@ Um die Blaupause zu installieren, kann folgender Link verwendet werden:
 https://gist.github.com/MaxxKra/4b8e2fbc5555a85669288ae4573b8815
 
 
-## :two: TEMPLATE TERMINE HEUTE
+# :two: TEMPLATE TERMINE HEUTE
 
 
 Alle Templates sind mit meinem Kalender `calendar.meine_termine` angelegt.
@@ -188,7 +188,7 @@ sensor:
 
 
 
-## :three: TEMPLATE TERMINE MORGEN
+# :three: TEMPLATE TERMINE MORGEN
 
 
 Für die Termine Morgen habe ich in meinem Google-Kalender für die Tests folgende Termine eingetragen:
@@ -308,7 +308,7 @@ sensor:
 <br>
 
 
-## :four: TEMPLATE NÄCHSTER TERMIN HEUTE
+# :four: TEMPLATE NÄCHSTER TERMIN HEUTE
 
 
 Um eine Terminerinnerung 30 Minuten vorher zu erhalten, habe ich dieses Template angelegt.
@@ -432,7 +432,7 @@ sensor:
 <br>
 
 
-## :five: TEMPLATE TERMIN MORGEN UM DIESE ZEIT
+# :five: TEMPLATE TERMIN MORGEN UM DIESE ZEIT
 
 Um eine Terminerinnerung 24 Stunden vorher zu erhalten, habe ich dieses Template angelegt.
 
@@ -555,7 +555,7 @@ sensor:
 <br>
 
 
-## :six: NOTIFY AUTOMATISIERUNGEN
+# :six: NOTIFY AUTOMATISIERUNGEN
 
 
 Die folgenden Automatisierungen werden durch eine Veränderung des Sensors (Nächster Termin Heute/Morgen) ausgelöst.
