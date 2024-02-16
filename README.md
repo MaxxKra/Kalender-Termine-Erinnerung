@@ -565,6 +565,12 @@ Eine Bedingung ist, dass mindestens 1 Termin ansteht (also nicht 0)
 <img src="https://raw.githubusercontent.com/MaxxKra/README_images/master/Termine/HA_Termin_Heute_Nächster_Anzahl.png" alt="Example" width="600"/>
 
 
+Als Ergebnis werden die Erinnerungen als Notify an das Smartphone gesendet:
+
+
+<img src="https://raw.githubusercontent.com/MaxxKra/README_images/master/Termine/Notifys.png" alt="Example" width="600"/>
+
+
 Die Automatisierung ist hier als YAML-Code zum kopieren bereit gestellt.
 > [!IMPORTANT]
 > Nicht vergessen `notify.<DEIN-SMARTPHONE>` auf deine Entität zu Ändern!
