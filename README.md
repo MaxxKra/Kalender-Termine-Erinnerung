@@ -784,7 +784,7 @@ entities:
     icon: mdi:calendar-alert
     color: '#ec6288'
 firstDayOfWeek: 1
-maxDaysToShow: 14
+maxDaysToShow: 2
 refreshInterval: 60
 showDate: true
 showCurrentEventLine: false
