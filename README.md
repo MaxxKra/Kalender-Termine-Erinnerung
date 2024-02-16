@@ -553,3 +553,103 @@ sensor:
 </details>
 
 <br>
+
+
+## :six: NOTIFY AUTOMATISIERUNGEN
+
+
+Die folgenden Automatisierungen werden durch eine Veränderung des Sensors (Nächster Termin Heute/Morgen) ausgelöst.
+Eine Bedingung ist, dass mindestens 1 Termin ansteht (also nicht 0)
+
+
+<img src="https://raw.githubusercontent.com/MaxxKra/README_images/master/Termine/HA_Termin_Heute_Nächster_Anzahl.png" alt="Example" width="600"/>
+
+
+Die Automatisierung ist hier als YAML-Code zum kopieren bereit gestellt.
+> [!IMPORTANT]
+> Nicht vergessen `notify.<DEIN-SMARTPHONE>` auf deine Entität zu Ändern!
+
+
+```yaml
+alias: Termin Heute Notify
+description: ""
+trigger:
+  - platform: state
+    entity_id:
+      - sensor.termine_heute_nachster
+    attribute: termine_heute
+condition:
+  - condition: not
+    conditions:
+      - condition: state
+        entity_id: sensor.termine_morgen_nachster
+        state: "0"
+action:
+  - service: notify.<DEIN-SMARTPHONE>
+    metadata: {}
+    data:
+      title: Nächster Termin in 30 Minuten!
+      message: >-
+        Uhrzeit:
+        {{states.sensor.termine_heute_nachster.attributes.termine_heute.0.Uhrzeit}}
+        Uhr
+
+        Termin:
+        {{states.sensor.termine_heute_nachster.attributes.termine_heute.0.Termin
+        }}
+
+        {{
+        states.sensor.termine_heute_nachster.attributes.termine_heute.0.Dauer}}
+
+        Hinweis:
+        {{states.sensor.termine_heute_nachster.attributes.termine_heute.0.Hinweis
+        }}
+mode: single
+```
+
+
+Die Erinnerung für Morgen verhällt sich genauso wie die für Heute.
+Auch hier wird durch eine Veränderung des Sensors die Automatisierung ausgelöst.
+
+
+Die Automatisierung ist hier als YAML-Code zum kopieren bereit gestellt.
+> [!IMPORTANT]
+> Nicht vergessen `notify.<DEIN-SMARTPHONE>` auf deine Entität zu Ändern!
+
+
+```yaml
+alias: Termin Morgen Notify
+description: ""
+trigger:
+  - platform: state
+    entity_id:
+      - sensor.termine_morgen_nachster
+    attribute: termine_morgen
+condition:
+  - condition: not
+    conditions:
+      - condition: state
+        entity_id: sensor.termine_morgen_nachster
+        state: "0"
+action:
+  - service: notify.<DEIN-SMARTPHONE>
+    metadata: {}
+    data:
+      title: Termin Morgen um diese Zeit!
+      message: >-
+        Uhrzeit:
+        {{states.sensor.termine_morgen_nachster.attributes.termine_morgen.0.Uhrzeit}}
+        Uhr
+
+        Termin:
+        {{states.sensor.termine_morgen_nachster.attributes.termine_morgen.0.Termin
+        }}
+
+        {{
+        states.sensor.termine_morgen_nachster.attributes.termine_morgen.0.Dauer}}
+
+        Hinweis:
+        {{states.sensor.termine_morgen_nachster.attributes.termine_morgen.0.Hinweis
+        }}
+mode: single
+```
