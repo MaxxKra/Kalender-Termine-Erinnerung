@@ -7,7 +7,7 @@ Mit dieser Zusammenstellung von Home Assistant Trigger-Templates und Notify-Auto
 ### <p align="center">Wenn du Interesse daran hast, mich, meinen Kanal oder meine kreative Arbeit zu unterstützen,<br>freue ich mich über jeglichen Support:
 </p>
 <p align="center">
-  <a href="https://www.buymeacoffee.com/">
+  <a href="https://www.buymeacoffee.com/bastler">
     <img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee">
   </a>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
