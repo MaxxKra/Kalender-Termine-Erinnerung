@@ -61,6 +61,41 @@ Um die Blaupause zu installieren, kann folgender Link verwendet werden:
 https://gist.github.com/MaxxKra/4b8e2fbc5555a85669288ae4573b8815
 
 
+Für den Fall, dass jemand lieber die Automatisierung selber anlegen möchte, ist hier ein Vorlage:
+<details>
+
+
+### TRIGGER AUTOMATISIERUNG
+
+<summary>:arrow_down_small: TRIGGER AUTOMATISIERUNG :arrow_down_small:</summary>
+
+
+<img src="https://raw.githubusercontent.com/MaxxKra/README_images/master/Termine/Automatisierung_Trigger_Update.png" alt="Example" width="800"/>
+
+
+```yaml
+description: ""
+mode: single
+trigger:
+  - platform: homeassistant
+    event: start
+  - platform: time_pattern
+    minutes: /15
+condition: []
+action:
+  - service: input_button.press
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_button.trigger_update
+```
+
+</details>
+
+<br>
+
+
+
 # :two: TEMPLATE TERMINE HEUTE
 
 
