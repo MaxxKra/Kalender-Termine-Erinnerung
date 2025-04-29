@@ -25,7 +25,7 @@
 # Auslöser - Aktion starten (Alle 15 Min. und HA Neustart)
 #----------------------------------------------------------------------------------------
 trigger:
-  - platform: state
+  - trigger: state
     entity_id:
       - input_button.trigger_update
       
@@ -33,7 +33,7 @@ trigger:
 # Aktion - Events abrufen (60 Tage)
 #----------------------------------------------------------------------------------------
 action:
-  - service: calendar.get_events
+  - action: calendar.get_events
     target:
       entity_id: calendar.meine_termine
     data:
