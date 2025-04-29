@@ -82,13 +82,13 @@ Für den Fall, dass jemand lieber die Automatisierung selber anlegen möchte, is
 description: ""
 mode: single
 trigger:
-  - platform: homeassistant
+  - trigger: homeassistant
     event: start
-  - platform: time_pattern
+  - trigger: time_pattern
     minutes: /15
 condition: []
 action:
-  - service: input_button.press
+  - action: input_button.press
     metadata: {}
     data: {}
     target:
@@ -162,7 +162,7 @@ Dazu muss lediglich das folgende Template in Home Assistant angelegt werden.
 # Auslöser - Aktion starten (Alle 15 Min. und HA Neustart)
 #----------------------------------------------------------------------------------------
 trigger:
-  - platform: state
+  - trigger: state
     entity_id:
       - input_button.trigger_update
       
@@ -170,7 +170,7 @@ trigger:
 # Aktion - Events abrufen (60 Tage)
 #----------------------------------------------------------------------------------------
 action:
-  - service: calendar.get_events
+  - action: calendar.get_events
     target:
       entity_id: calendar.meine_termine
     data:
@@ -283,7 +283,7 @@ Dazu muss lediglich das folgende Template in Home Assistant angelegt werden.
 # Auslöser - Aktion starten (Alle 15 Min. und HA Neustart)
 #----------------------------------------------------------------------------------------
 trigger:
-  - platform: state
+  - trigger: state
     entity_id:
       - input_button.trigger_update
       
@@ -291,7 +291,7 @@ trigger:
 # Aktion - Events abrufen (60 Tage)
 #----------------------------------------------------------------------------------------
 action:
-  - service: calendar.get_events
+  - action: calendar.get_events
     target:
       entity_id: calendar.meine_termine
     data:
@@ -407,7 +407,7 @@ Dazu muss lediglich das folgende Template in Home Assistant angelegt werden.
 # Auslöser - Aktion starten (Alle 15 Min. und HA Neustart) über Automatisierung
 #----------------------------------------------------------------------------------------
 trigger:
-  - platform: state
+  - trigger: state
     entity_id:
       - input_button.trigger_update
       
@@ -415,7 +415,7 @@ trigger:
 # Aktion - Event abrufen in 30 Minuten für 15 Minuten
 #----------------------------------------------------------------------------------------
 action:
-  - service: calendar.get_events
+  - action: calendar.get_events
     target:
       entity_id: calendar.meine_termine
     data:
@@ -530,7 +530,7 @@ Dazu muss lediglich das folgende Template in Home Assistant angelegt werden.
 # Auslöser - Aktion starten (Alle 15 Min. und HA Neustart) durch Automatisierung
 #----------------------------------------------------------------------------------------
 trigger:
-  - platform: state
+  - trigger: state
     entity_id:
       - input_button.trigger_update
       
@@ -538,7 +538,7 @@ trigger:
 # Aktion - Events abrufen in 24 Stunden für 15 Minuten
 #----------------------------------------------------------------------------------------
 action:
-  - service: calendar.get_events
+  - action: calendar.get_events
     target:
       entity_id: calendar.meine_termine
     data:
@@ -620,7 +620,7 @@ Die Automatisierung ist hier als YAML-Code zum kopieren bereit gestellt.
 alias: Termin Heute Notify
 description: ""
 trigger:
-  - platform: state
+  - trigger: state
     entity_id:
       - sensor.termine_heute_nachster
     attribute: termine_heute
@@ -631,7 +631,7 @@ condition:
         entity_id: sensor.termine_morgen_nachster
         state: "0"
 action:
-  - service: notify.<DEIN-SMARTPHONE>
+  - action: notify.<DEIN-SMARTPHONE>
     metadata: {}
     data:
       title: Nächster Termin in 30 Minuten!
@@ -667,7 +667,7 @@ Die Automatisierung ist hier als YAML-Code zum kopieren bereit gestellt.
 alias: Termin Morgen Notify
 description: ""
 trigger:
-  - platform: state
+  - trigger: state
     entity_id:
       - sensor.termine_morgen_nachster
     attribute: termine_morgen
@@ -678,7 +678,7 @@ condition:
         entity_id: sensor.termine_morgen_nachster
         state: "0"
 action:
-  - service: notify.<DEIN-SMARTPHONE>
+  - action: notify.<DEIN-SMARTPHONE>
     metadata: {}
     data:
       title: Termin Morgen um diese Zeit!
